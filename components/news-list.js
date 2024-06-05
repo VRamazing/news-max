@@ -3,6 +3,11 @@ import Link from 'next/link';
 
 
 const NewsList = ({news}) => {
+    console.log(news)
+    if(!news && !news.length){
+      return <p>No news</p>
+    }
+
     return (
         <ul id="news" className="news-list">
                 {news.map(newsItem => (

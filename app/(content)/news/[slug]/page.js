@@ -1,11 +1,11 @@
 import React from 'react';
-import { DUMMY_NEWS } from '@/dummy-news';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { getNewsItem } from '@/lib/news';
 
-const NewsDetailPage = ({params}) => {
+const NewsDetailPage = async ({params}) => {
     const {slug} = params;
-    const newsItem = DUMMY_NEWS.find(newsItem => newsItem.slug === (slug))
+    const newsItem = await getNewsItem(slug);
     if(newsItem){
         return (
             <article className='news-article'>
